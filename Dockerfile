@@ -21,13 +21,20 @@ LABEL                                                             \
 ARG INSTALL_PREFIX=/usr/local
 ENV INSTALL_PREFIX=${INSTALL_PREFIX}
 
-ARG TMUX_TAG=3.1
+ARG TMUX_TAG=3.2
 ENV TMUX_TAG=${TMUX_TAG}
 
 WORKDIR /bin
 COPY install_tmux.sh ./
 RUN ["chmod", "+x", "install_tmux.sh"]
 RUN ["./install_tmux.sh"]
+
+RUN apt remove -qy                \
+    build-essential               \
+    autoconf automake libtool g++ \
+    make gcc                      \
+    pkg-config                    \
+    && apt clean
 
 ENTRYPOINT ["/usr/local/bin/tmux"]
 
