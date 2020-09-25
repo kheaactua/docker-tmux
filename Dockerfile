@@ -1,4 +1,4 @@
-ARG UBUNTU_TAG=18.04
+ARG UBUNTU_TAG=20.04
 FROM ubuntu:${UBUNTU_TAG}
 
 RUN apt-get -q -y update                      \
