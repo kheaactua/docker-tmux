@@ -1,6 +1,7 @@
 ARG UBUNTU_TAG=20.04
 FROM ubuntu:${UBUNTU_TAG}
 
+ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get -q -y update                      \
     && apt-get install -q -y                  \
         build-essential                       \
